@@ -27,9 +27,10 @@ class Api {
 
       print("!!!! videos");
       return videos;
-    } else {
-      throw Exception("Failed to load videos");
+    } else if(response.statusCode == 403) {
+     throw("Limite de recurso da API excedido");
     }
+    else  throw Exception("Failed to load videos");
   }
 
   Future<List<VideoModel>> search(String search) async {
